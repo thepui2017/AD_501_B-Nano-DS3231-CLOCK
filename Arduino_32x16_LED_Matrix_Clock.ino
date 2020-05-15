@@ -421,12 +421,12 @@ void Led32x16Display() {
   Displayi < 16 ? Displayi++ : Displayi = 0;
   for (j = 0; j < 16; j++) {
     digitalWrite(SIN1, ( 0x8000 >> Displayi >> j ) & 0x0001); //0x8000=32768
-    digitalWrite(SIN3, (*(DisplayBuffer + 15 - j) >> 15 - Displayi) & 1 ); // hours 0x0001 = positions old value:0x0001 new value:1
-    digitalWrite(SIN2, (*(DisplayBuffer + 31 - j) >> 15 - Displayi) & 0x0001 );
-    digitalWrite(CLOCK, HIGH); // LOW
-    digitalWrite(CLOCK, LOW); // HIGH
+    digitalWrite(SIN2, (*(DisplayBuffer + 15 - j) >> 15 - Displayi) & 1 ); // hours 0x0001 = positions old value:0x0001 new value:1
+    digitalWrite(SIN3, (*(DisplayBuffer + 31 - j) >> 15 - Displayi) & 0x0001 );
+    digitalWrite(CLOCK, LOW); // LOW
+    digitalWrite(CLOCK, HIGH); // HIGH
   }
-  digitalWrite(LATCH, LOW); //HIGH
-  digitalWrite(LATCH, HIGH); //LOW
+  digitalWrite(LATCH, HIGH); //HIGH
+  digitalWrite(LATCH, LOW); //LOW
   //delay(5000);
 }
